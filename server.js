@@ -18,7 +18,7 @@ app.post("/api/chat", async (req, res) => {
       },
       body: JSON.stringify({
         model: "lite",
-        messages: messages.slice(-10), // 只保留最近10条对话
+        messages: messages.slice(-2), // 只保留最近10条对话
         top_k: 20,        // 增加多样性
         temperature: 1.0, // 增加随机性
         stream: false
@@ -52,4 +52,5 @@ app.post("/api/chat", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+
 
