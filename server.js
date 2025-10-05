@@ -7,7 +7,7 @@ app.use(express.json());
 
 app.post("/api/chat", async (req, res) => {
   const { messages } = req.body; // 获取前端传来的用户对话数组
-  console.log("📥 Received request body:", req.body);
+  console.log("📥 Received request body:", JSON.stringify(req.body, null, 2));
 
   try {
     const response = await fetch(
@@ -52,3 +52,4 @@ app.post("/api/chat", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+
