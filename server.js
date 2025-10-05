@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.post("/api/chat", async (req, res) => {
   const { message } = req.body;
-
+  console.log("📥 Received request body:", req.body);
   // 内置 fetch 使用方法
   const response = await fetch("https://spark-api-open.xf-yun.com/v1/chat/completions", {
     method: "POST",
@@ -36,5 +36,6 @@ app.post("/api/chat", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+
 
 
