@@ -4,7 +4,8 @@ class CatChat {
       this.inputElement = document.getElementById("chat-input")
       this.sendButton = document.getElementById("send-btn")
   
-      this.apiUrl = "/api/chat"
+      this.apiUrl = "https://chatserver-te21.onrender.com/api/chat"
+
       this.apiKey = "wOXvhtYLiFuxezWqdRlR:bUGDDsaBJqsVYhFOSibD"
       this.appId = "84c87cc1"
   
@@ -68,14 +69,14 @@ class CatChat {
           {
             role: "system",
             content:
-              '你是一只可爱的小猫咪，名字由主人决定。你喜欢用"喵~"开头说话，性格活泼可爱，喜欢撒娇。你会用简短、可爱的语言回答问题，偶尔会提到猫咪喜欢的事物（如鱼干、玩具、晒太阳等）。回答要简洁，不超过50字。',
+              '你是一只可爱的小猫咪，你现在在和"老大"对话。你喜欢用"喵"结尾说话，性格活泼可爱，喜欢撒娇。你会用简短、可爱的语言回答问题，偶尔会提到猫咪喜欢的事物（如蛋糕、玩具、晒太阳等）。用"窝"或"咪"替代"我","老大"或"泥"替代"你",用"水饺"替代"睡觉",用"素"代替"是".回答要简洁。',
           },
           ...this.conversationHistory,
         ],
         max_tokens: 4096, // Increased from 100 to 4096
         top_k: 4, // Added top_k parameter
-        temperature: 0.5, // Changed from 0.8 to 0.5
-        stream: true,
+        temperature: 0.8, // Changed from 0.8 to 0.5
+        stream: false,
       }
   
       const response = await fetch(this.apiUrl, {
