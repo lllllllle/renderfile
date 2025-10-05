@@ -18,6 +18,10 @@ app.post("/api/chat", async (req, res) => {
       },
       body: JSON.stringify({
         model: "lite",
+        messages: messages.slice(-10), // 只保留最近10条对话
+        top_k: 20,        // 增加多样性
+        temperature: 1.0, // 增加随机性
+        stream: false
         messages: [
           {
             role: "system",
@@ -35,7 +39,6 @@ app.post("/api/chat", async (req, res) => {
           }
         ],
         max_tokens: 4096,
-        temperature: 0.5
       }),
     });
 
@@ -49,3 +52,4 @@ app.post("/api/chat", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+
